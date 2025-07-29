@@ -55,7 +55,7 @@
                     <i class="fas fa-home"></i>
                     <span>Trang chủ</span>
                 </a>
-                <a href="#" class="hover:text-blue-200">Thể loại</a>
+                <a href="{{route('categories')}}" class="hover:text-blue-200">Thể loại</a>
                 <a href="#" class="hover:text-blue-200">Top truyện</a>
                 <a href="#" class="hover:text-blue-200">Truyện mới</a>
                 <a href="#" class="hover:text-blue-200">Hoàn thành</a>
@@ -250,14 +250,9 @@
                 <div class="bg-white rounded-lg shadow-sm p-6 mb-6">
                     <h3 class="text-lg font-bold text-gray-800 mb-4">📚 Thể loại</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-blue-200">Action</span>
-                        <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-green-200">Romance</span>
-                        <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-purple-200">Fantasy</span>
-                        <span class="bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-red-200">Horror</span>
-                        <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-yellow-200">Comedy</span>
-                        <span class="bg-indigo-100 text-indigo-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-indigo-200">Sci-fi</span>
-                        <span class="bg-pink-100 text-pink-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-pink-200">Drama</span>
-                        <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-gray-200">Slice of Life</span>
+                        @foreach ($categories['data']['items'] as $item)
+                            <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm cursor-pointer hover:bg-blue-200">{{ $item['name'] }}</span>
+                        @endforeach
                     </div>
                 </div>
 

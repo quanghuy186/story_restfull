@@ -10,12 +10,15 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $response = Http::get('https://otruyenapi.com/v1/api/home');
-        $data = $response->json();
-        return view('pages.home')->with('story_news', $data);
-        // return response()->json($response->json());
+        $story_news = Http::get('https://otruyenapi.com/v1/api/home')->json();
+        $categories = Http::get('https://otruyenapi.com/v1/api/the-loai')->json();
+        return view('pages.home')->with('story_news', $story_news)->with('categories', $categories);
     }
 
-
+    public function category(){
+        $categories = Http::get('https://otruyenapi.com/v1/api/the-loai')->json();
+        $item_categories = Http::get('https://otruyenapi.com/v1/api/the-loai/action')->json();
+        return view('pages.category')->with('categories', $categories)->with('item_categories', $item_categories);
+    }
 
 }
