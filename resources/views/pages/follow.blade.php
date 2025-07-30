@@ -111,11 +111,11 @@
                     <i class="fas fa-home"></i>
                     <span>Trang chủ</span>
                 </a>
-                <a href="#" class="hover:text-blue-200">Thể loại</a>
-                <a href="#" class="hover:text-blue-200">Top truyện</a>
-                <a href="#" class="hover:text-blue-200">Truyện mới</a>
-                <a href="#" class="hover:text-blue-200">Hoàn thành</a>
-                <a href="#" class="text-blue-200 font-semibold">Theo dõi</a>
+                <a href="{{route('categories')}}" class="hover:text-blue-200">Thể loại</a>
+                <a href="{{ route('list_story', 'top-truyen') }}" class="hover:text-blue-200">Top truyện</a>
+                <a href="{{ route('list_story', 'truyen-moi') }}" class="text-blue-200 font-semibold">Truyện mới</a>
+                <a href="{{ route('list_story', 'hoan-thanh') }}" class="hover:text-blue-200">Hoàn thành</a>
+                <a href="#" class="hover:text-blue-200">Theo dõi</a>
             </div>
         </div>
     </nav>

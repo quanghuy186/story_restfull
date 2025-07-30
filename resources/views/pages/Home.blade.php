@@ -55,10 +55,10 @@
                     <i class="fas fa-home"></i>
                     <span>Trang chủ</span>
                 </a>
-                <a href="{{route('categories')}}" class="hover:text-blue-200">Thể loại</a>
-                <a href="#" class="hover:text-blue-200">Top truyện</a>
-                <a href="#" class="hover:text-blue-200">Truyện mới</a>
-                <a href="#" class="hover:text-blue-200">Hoàn thành</a>
+                <a href="{{route('list_category', 'action')}}" class="hover:text-blue-200">Thể loại</a>
+                <a href="{{ route('list_story', 'top-truyen') }}" class="hover:text-blue-200">Top truyện</a>
+                <a href="{{ route('list_story', 'truyen-moi') }}" class="text-blue-200 font-semibold">Truyện mới</a>
+                <a href="{{ route('list_story', 'hoan-thanh') }}" class="hover:text-blue-200">Hoàn thành</a>
                 <a href="#" class="hover:text-blue-200">Theo dõi</a>
             </div>
         </div>
@@ -73,21 +73,12 @@
                     <div class="bg-gradient-to-r from-red-500 to-pink-500 rounded-lg p-6 text-white">
                         <h2 class="text-2xl font-bold mb-4">🔥 Truyện HOT nhất</h2>
                         <div class="grid md:grid-cols-3 gap-4">
-                            <div class="bg-white/10 backdrop-blur rounded-lg p-4">
-                                <div class="aspect-[3/4] bg-gray-300 rounded mb-3"></div>
-                                <h3 class="font-semibold mb-1">One Piece</h3>
-                                <p class="text-sm opacity-90">Chapter 1095</p>
-                            </div>
-                            <div class="bg-white/10 backdrop-blur rounded-lg p-4">
-                                <div class="aspect-[3/4] bg-gray-300 rounded mb-3"></div>
-                                <h3 class="font-semibold mb-1">Naruto</h3>
-                                <p class="text-sm opacity-90">Chapter 700</p>
-                            </div>
-                            <div class="bg-white/10 backdrop-blur rounded-lg p-4">
-                                <div class="aspect-[3/4] bg-gray-300 rounded mb-3"></div>
-                                <h3 class="font-semibold mb-1">Attack on Titan</h3>
-                                <p class="text-sm opacity-90">Chapter 139</p>
-                            </div>
+                            @foreach (array_slice($story_hots['data']['items'], 0, 3) as $item)
+                                <div class="bg-white/10 backdrop-blur rounded-lg p-4">
+                                    <img class="aspect-[3/4] bg-gray-300 rounded mb-3" src="{{ $item['thumb_url'] ? "https://otruyenapi.com/uploads/comics/".$item['thumb_url'] : '/images/default-manga.jpg' }}" alt="">
+                                    <h3 class="font-semibold mb-1">{{ $item['name'] }}</h3>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </section>
@@ -184,27 +175,33 @@
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         @foreach ($story_news['data']['items'] as $item)
                             <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
-                                <div class="aspect-[3/4] relative overflow-hidden">
-                                    <img src="{{ $item['thumb_url'] ? "https://otruyenapi.com/uploads/comics/".$item['thumb_url'] : '/images/default-manga.jpg' }}" 
-                                        alt="{{ $item['name'] }}"
-                                        class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                                    @if($item['is_new'] ?? false)
-                                        <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
-                                            NEW
-                                        </div>
-                                    @endif
-                                </div>
+                                <a href="{{ route('story', $item['slug']) }}">
+                                    <div class="aspect-[3/4] relative overflow-hidden">
+                                        <img src="{{ $item['thumb_url'] ? "https://otruyenapi.com/uploads/comics/".$item['thumb_url'] : '/images/default-manga.jpg' }}" 
+                                            alt="{{ $item['name'] }}"
+                                            class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                        @if($item['is_new'] ?? false)
+                                            <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+                                                NEW
+                                            </div>
+                                        @endif
+                                    </div>
+                                </a>
+                                
                                 <div class="p-4">
                                     <h3 class="font-semibold mb-2 line-clamp-2">{{ $item['name'] }}</h3>
-                                    @foreach ($item['chaptersLatest'] as $chapter_name)
-                                        <p class="text-sm text-gray-600 mb-3">{{ $chapter_name['chapter_name'] ?? 'Chapter 278' }} Chương</p> 
-                                    @endforeach
+                                    @if (isset($item['chaptersLatest']))
+                                        @foreach ($item['chaptersLatest'] as $chapter_name)
+                                            <p class="text-sm text-gray-600 mb-3">{{ $chapter_name['chapter_name'] ?? 'Chapter 278' }} Chương</p> 
+                                        @endforeach
+                                    @endif
+                                    
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center space-x-1 text-yellow-500 text-sm">
                                             <i class="fas fa-star"></i>
                                             <span>{{ $item['rating'] ?? '4.6' }}</span>
                                         </div>
-                                        <span class="text-xs text-gray-500">{{ $item['updatedAt'] ?? '1 ngày trước' }}</span>
+                                        <span class="text-xs text-gray-500">{{ timeAgo($item['updatedAt']) ?? '1 ngày trước' }}</span>
                                     </div>
                                 </div>
                             </div>

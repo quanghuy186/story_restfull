@@ -85,10 +85,10 @@
                     <i class="fas fa-home"></i>
                     <span>Trang chủ</span>
                 </a>
-                <a href="#" class="hover:text-blue-200">Thể loại</a>
-                <a href="#" class="hover:text-blue-200">Top truyện</a>
-                <a href="#" class="text-blue-200 font-semibold">Truyện mới</a>
-                <a href="#" class="hover:text-blue-200">Hoàn thành</a>
+                <a href="{{route('categories')}}" class="hover:text-blue-200">Thể loại</a>
+                <a href="{{ route('list_story', 'top-truyen') }}" class="hover:text-blue-200">Top truyện</a>
+                <a href="{{ route('list_story', 'truyen-moi') }}" class="text-blue-200 font-semibold">Truyện mới</a>
+                <a href="{{ route('list_story', 'hoan-thanh') }}" class="hover:text-blue-200">Hoàn thành</a>
                 <a href="#" class="hover:text-blue-200">Theo dõi</a>
             </div>
         </div>
@@ -310,292 +310,50 @@
 
                 <!-- Grid View -->
                 <div id="manga-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-                    <!-- New Manga Card 1 -->
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover group">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-pink-400 to-red-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-play mr-2"></i>
-                                    Đọc ngay
-                                </button>
-                            </div>
-                            <!-- NEW Badge -->
-                            <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold new-badge">
-                                NEW
-                            </div>
-                            <!-- Time badge -->
-                            <div class="absolute bottom-2 left-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
-                                <i class="fas fa-clock mr-1"></i>
-                                2 giờ trước
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 group-hover:text-blue-600">The Beginning After The End</h3>
-                            <p class="text-sm text-gray-600 mb-3">Chapter 1 • Mới phát hành</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm">
-                                    <i class="fas fa-star"></i>
-                                    <span>--</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">756 lượt xem</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Continue with more cards... -->
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover group">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-indigo-400 to-blue-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-play mr-2"></i>
-                                    Đọc ngay
-                                </button>
-                            </div>
-                            <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold new-badge">
-                                NEW
-                            </div>
-                            <div class="absolute bottom-2 left-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
-                                <i class="fas fa-clock mr-1"></i>
-                                10 giờ trước
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 group-hover:text-blue-600">Legend of the Northern Blade</h3>
-                            <p class="text-sm text-gray-600 mb-3">Chapter 1 • Mới phát hành</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1">
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Mới</span>
-                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Action</span>
-                                </div>
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm">
-                                    <i class="fas fa-star"></i>
-                                    <span>--</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">634 lượt xem</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover group">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-purple-400 to-pink-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-play mr-2"></i>
-                                    Đọc ngay
-                                </button>
-                            </div>
-                            <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold new-badge">
-                                NEW
-                            </div>
-                            <div class="absolute bottom-2 left-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
-                                <i class="fas fa-clock mr-1"></i>
-                                12 giờ trước
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 group-hover:text-blue-600">The Great Mage Returns After 4000 Years</h3>
-                            <p class="text-sm text-gray-600 mb-3">Chapter 1 • Mới phát hành</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1">
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Mới</span>
-                                    <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Fantasy</span>
-                                </div>
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm">
-                                    <i class="fas fa-star"></i>
-                                    <span>--</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">523 lượt xem</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover group">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-teal-400 to-green-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-play mr-2"></i>
-                                    Đọc ngay
-                                </button>
-                            </div>
-                            <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold new-badge">
-                                NEW
-                            </div>
-                            <div class="absolute bottom-2 left-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
-                                <i class="fas fa-clock mr-1"></i>
-                                15 giờ trước
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 group-hover:text-blue-600">Nano Machine</h3>
-                            <p class="text-sm text-gray-600 mb-3">Chapter 1 • Mới phát hành</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1">
-                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Mới</span>
-                                    <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">Sci-fi</span>
-                                </div>
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm">
-                                    <i class="fas fa-star"></i>
-                                    <span>--</span>
-                                </div>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">445 lượt xem</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- List View (Hidden by default) -->
-                <div id="manga-list" class="hidden space-y-6 mb-8">
-                    <!-- List Item 1 -->
-                    <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
-                        <div class="flex items-start space-x-6">
-                            <div class="w-24 h-32 bg-gradient-to-br from-pink-400 to-red-600 rounded flex-shrink-0 relative">
-                                <div class="absolute -top-2 -left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold new-badge">
-                                    NEW
-                                </div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-bold text-gray-800 mb-2 hover:text-blue-600 cursor-pointer">
-                                            The Beginning After The End
-                                        </h3>
-                                        <p class="text-sm text-gray-600 mb-3">
-                                            <span class="font-semibold">Tác giả:</span> TurtleMe • 
-                                            <span class="font-semibold">Thể loại:</span> Fantasy, Action • 
-                                            <span class="font-semibold">Phát hành:</span> 2 giờ trước
-                                        </p>
-                                        <p class="text-gray-700 mb-4 line-clamp-3">
-                                            Vua Grey có sức mạnh, sự giàu có và uy tín tuyệt đối trong một thế giới được cai trị bởi khả năng quân sự và phép thuật. Tuy nhiên, sự cô đơn ăn mòn trái tim những người có sức mạnh lớn. Bên dưới vẻ ngoài quyến rũ của một vị vua quyền lực là vỏ bọc của con người thiếu mục đích và ý chí...
-                                        </p>
-                                        <div class="flex items-center space-x-4 text-sm">
-                                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">
-                                                Chapter 1 • Mới phát hành
-                                            </span>
-                                            <div class="flex items-center space-x-1">
-                                                <i class="fas fa-eye text-gray-400"></i>
-                                                <span class="text-gray-600">1.2K lượt xem</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1">
-                                                <i class="fas fa-clock text-gray-400"></i>
-                                                <span class="text-gray-600">2 giờ trước</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col items-end space-y-3 ml-6">
-                                        <div class="flex items-center space-x-2">
-                                            <button class="p-2 text-gray-400 hover:text-red-500 transition-colors">
-                                                <i class="fas fa-heart text-lg"></i>
-                                            </button>
-                                            <button class="p-2 text-gray-400 hover:text-blue-500 transition-colors">
-                                                <i class="fas fa-bookmark text-lg"></i>
-                                            </button>
-                                        </div>
-                                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                    @foreach ($story_news['data']['items'] as $new)
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover group">
+                            <div class="aspect-[3/4] relative overflow-hidden">
+                                <a href="{{ route('story', $new['slug']) }}">
+                                    <img class="w-full h-full bg-gradient-to-br from-pink-400 to-red-600" src="{{ $new['thumb_url'] ? "https://otruyenapi.com/uploads/comics/".$new['thumb_url'] : '/images/default-manga.jpg' }}" alt="">
+                                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 stransition-all duration-300 flex items-center justify-center">
+                                        <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
+                                            <i class="fas fa-play mr-2"></i>
                                             Đọc ngay
                                         </button>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- List Item 2 -->
-                    <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
-                        <div class="flex items-start space-x-6">
-                            <div class="w-24 h-32 bg-gradient-to-br from-blue-400 to-purple-600 rounded flex-shrink-0 relative">
-                                <div class="absolute -top-2 -left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold new-badge">
-                                    NEW
-                                </div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-bold text-gray-800 mb-2 hover:text-blue-600 cursor-pointer">
-                                            Return of the Mount Hua Sect
-                                        </h3>
-                                        <p class="text-sm text-gray-600 mb-3">
-                                            <span class="font-semibold">Tác giả:</span> LICO • 
-                                            <span class="font-semibold">Thể loại:</span> Action, Martial Arts • 
-                                            <span class="font-semibold">Phát hành:</span> 4 giờ trước
-                                        </p>
-                                        <p class="text-gray-700 mb-4 line-clamp-3">
-                                            Chung Myung, The 13th Disciple của Great Flowery Mountain Sect, một trong những Tam Đại đệ tử của Ten Great Sects. Sau khi tên độc ma Cheon Ma của Ma giáo được tiêu diệt, anh ta thở hơi thở cuối cùng trên đỉnh núi hoa. Tuy nhiên, anh tỉnh dậy trong cơ thể của một đứa trẻ ...
-                                        </p>
-                                        <div class="flex items-center space-x-4 text-sm">
-                                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">
-                                                Chapter 1 • Mới phát hành
-                                            </span>
-                                            <div class="flex items-center space-x-1">
-                                                <i class="fas fa-eye text-gray-400"></i>
-                                                <span class="text-gray-600">890 lượt xem</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1">
-                                                <i class="fas fa-clock text-gray-400"></i>
-                                                <span class="text-gray-600">4 giờ trước</span>
-                                            </div>
-                                        </div>
+                                    <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold new-badge">
+                                        NEW
                                     </div>
-                                    <div class="flex flex-col items-end space-y-3 ml-6">
-                                        <div class="flex items-center space-x-2">
-                                            <button class="p-2 text-gray-400 hover:text-red-500 transition-colors">
-                                                <i class="fas fa-heart text-lg"></i>
-                                            </button>
-                                            <button class="p-2 text-gray-400 hover:text-blue-500 transition-colors">
-                                                <i class="fas fa-bookmark text-lg"></i>
-                                            </button>
-                                        </div>
-                                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                                            Đọc ngay
+                                </a>
+                                
+                                <div class="absolute bottom-2 left-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                                    <i class="fas fa-clock mr-1"></i>
+                                    {{ timeAgo($new['updatedAt']) }}
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold mb-2 line-clamp-2 group-hover:text-blue-600">{{ $new['name'] ? $new['name'] : 'chưa cập nhật'}}</h3>
+                                <p class="text-sm text-gray-600 mb-3">Chapter 1 • Mới phát hành</p>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center space-x-1 text-yellow-500 text-sm">
+                                        <i class="fas fa-star"></i>
+                                        <span>--</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <button class="text-gray-400 hover:text-red-500 transition-colors">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <button class="text-gray-400 hover:text-blue-500 transition-colors">
+                                            <i class="fas fa-bookmark"></i>
                                         </button>
                                     </div>
+                                    <span class="text-xs text-gray-500">756 lượt xem</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <!-- Load More Button -->

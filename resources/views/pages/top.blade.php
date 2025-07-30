@@ -96,10 +96,10 @@
                     <i class="fas fa-home"></i>
                     <span>Trang chủ</span>
                 </a>
-                <a href="#" class="hover:text-blue-200">Thể loại</a>
-                <a href="#" class="text-blue-200 font-semibold">Top truyện</a>
-                <a href="#" class="hover:text-blue-200">Truyện mới</a>
-                <a href="#" class="hover:text-blue-200">Hoàn thành</a>
+                <a href="{{route('categories')}}" class="hover:text-blue-200">Thể loại</a>
+                <a href="{{ route('list_story', 'top-truyen') }}" class="hover:text-blue-200">Top truyện</a>
+                <a href="{{ route('list_story', 'truyen-moi') }}" class="text-blue-200 font-semibold">Truyện mới</a>
+                <a href="{{ route('list_story', 'hoan-thanh') }}" class="hover:text-blue-200">Hoàn thành</a>
                 <a href="#" class="hover:text-blue-200">Theo dõi</a>
             </div>
         </div>
@@ -304,353 +304,64 @@
                     </div>
                 </div>
 
-                <!-- Top 3 Podium -->
-                <div class="bg-white rounded-lg shadow-sm p-8 mb-8">
-                    <h3 class="text-xl font-bold text-gray-800 mb-6 text-center">
-                        🏆 Bục vinh danh
-                    </h3>
-                    <div class="flex items-end justify-center space-x-4 md:space-x-8">
-                        <!-- 2nd Place -->
-                        <div class="text-center">
-                            <div class="w-20 h-28 md:w-24 md:h-32 bg-gradient-to-br from-gray-300 to-gray-500 rounded-lg mb-3 relative">
-                                <div class="absolute -top-3 -right-3 w-8 h-8 rank-2 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                                    2
-                                </div>
-                            </div>
-                            <div class="bg-gray-100 p-3 rounded-lg">
-                                <h4 class="font-bold text-sm mb-1">Attack on Titan</h4>
-                                <div class="flex items-center justify-center space-x-1 text-yellow-500 text-sm">
-                                    <i class="fas fa-star"></i>
-                                    <span>4.8</span>
-                                </div>
-                                <p class="text-xs text-gray-600">1.2M lượt xem</p>
-                            </div>
-                        </div>
-
-                        <!-- 1st Place -->
-                        <div class="text-center">
-                            <div class="w-24 h-32 md:w-28 md:h-36 bg-gradient-to-br from-yellow-300 to-yellow-600 rounded-lg mb-3 relative">
-                                <div class="absolute -top-4 -right-4 w-10 h-10 rank-1 rounded-full flex items-center justify-center text-white font-bold">
-                                    1
-                                </div>
-                                <div class="absolute -top-2 left-1/2 transform -translate-x-1/2">
-                                    <i class="fas fa-crown text-yellow-400 text-2xl"></i>
-                                </div>
-                            </div>
-                            <div class="bg-yellow-50 p-4 rounded-lg border-2 border-yellow-200">
-                                <h4 class="font-bold text-base mb-2">One Piece</h4>
-                                <div class="flex items-center justify-center space-x-1 text-yellow-500 mb-1">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="ml-1 font-bold">4.9</span>
-                                </div>
-                                <p class="text-sm text-gray-600">2.8M lượt xem</p>
-                            </div>
-                        </div>
-
-                        <!-- 3rd Place -->
-                        <div class="text-center">
-                            <div class="w-20 h-28 md:w-24 md:h-32 bg-gradient-to-br from-orange-300 to-orange-600 rounded-lg mb-3 relative">
-                                <div class="absolute -top-3 -right-3 w-8 h-8 rank-3 rounded-full flex items-center justify-center text-white font-bold text-sm">
-                                    3
-                                </div>
-                            </div>
-                            <div class="bg-orange-50 p-3 rounded-lg">
-                                <h4 class="font-bold text-sm mb-1">Demon Slayer</h4>
-                                <div class="flex items-center justify-center space-x-1 text-yellow-500 text-sm">
-                                    <i class="fas fa-star"></i>
-                                    <span>4.7</span>
-                                </div>
-                                <p class="text-xs text-gray-600">980K lượt xem</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <!-- Ranking List View -->
                 <div id="ranking-view" class="space-y-4 mb-8">
-                    <!-- Rank 4 -->
-                    <div class="bg-white rounded-lg shadow-sm p-6 top-card">
-                        <div class="flex items-center space-x-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rank-default rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                    4
+                    @foreach ($top_stories['data']['items'] as $key=>$item)
+                        <div class="bg-white rounded-lg shadow-sm p-6 top-card">
+                            <div class="flex items-center space-x-6">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-12 h-12 rank-default rounded-full flex items-center justify-center text-white font-bold text-lg">
+                                        {{$key+1}}
+                                    </div>
+                                    <img class="w-16 h-20 bg-gradient-to-br from-purple-400 to-pink-600 rounded flex-shrink-0" src="{{ $item['thumb_url'] ? "https://otruyenapi.com/uploads/comics/".$item['thumb_url'] : '/images/default-manga.jpg' }}" alt="">
                                 </div>
-                                <div class="w-16 h-20 bg-gradient-to-br from-purple-400 to-pink-600 rounded flex-shrink-0"></div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-gray-800 mb-2 hover:text-blue-600 cursor-pointer">
-                                            Naruto
-                                        </h3>
-                                        <p class="text-sm text-gray-600 mb-3">
-                                            Tác giả: Masashi Kishimoto • Thể loại: Action, Adventure • Chapter 700
-                                        </p>
-                                        <div class="flex items-center space-x-6">
-                                            <div class="flex items-center space-x-1">
-                                                <div class="flex text-yellow-500">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
+                                <div class="flex-1">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <h3 class="text-xl font-bold text-gray-800 mb-2 hover:text-blue-600 cursor-pointer">
+                                                {{ $item['name'] }}
+                                            </h3>
+                                            <p class="text-sm text-gray-600 mb-3">
+                                                Tác giả: Masashi Kishimoto • Thể loại: Action, Adventure • Chapter 700
+                                            </p>
+                                            <div class="flex items-center space-x-6">
+                                                <div class="flex items-center space-x-1">
+                                                    <div class="flex text-yellow-500">
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                        <i class="fas fa-star"></i>
+                                                    </div>
+                                                    <span class="font-bold text-lg ml-2">4.6</span>
+                                                    <span class="text-gray-500 text-sm">(45,678 đánh giá)</span>
                                                 </div>
-                                                <span class="font-bold text-lg ml-2">4.6</span>
-                                                <span class="text-gray-500 text-sm">(45,678 đánh giá)</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-blue-600">
-                                                <i class="fas fa-eye"></i>
-                                                <span class="font-semibold">856K lượt xem</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-red-500">
-                                                <i class="fas fa-heart"></i>
-                                                <span class="font-semibold">234K</span>
+                                                <div class="flex items-center space-x-1 text-blue-600">
+                                                    <i class="fas fa-eye"></i>
+                                                    <span class="font-semibold">856K lượt xem</span>
+                                                </div>
+                                                <div class="flex items-center space-x-1 text-red-500">
+                                                    <i class="fas fa-heart"></i>
+                                                    <span class="font-semibold">234K</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="flex items-center space-x-3">
-                                        <button class="text-gray-400 hover:text-red-500 transition-colors p-2">
-                                            <i class="fas fa-heart text-lg"></i>
-                                        </button>
-                                        <button class="text-gray-400 hover:text-blue-500 transition-colors p-2">
-                                            <i class="fas fa-bookmark text-lg"></i>
-                                        </button>
-                                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                                            Đọc ngay
-                                        </button>
+                                        <div class="flex items-center space-x-3">
+                                            <button class="text-gray-400 hover:text-red-500 transition-colors p-2">
+                                                <i class="fas fa-heart text-lg"></i>
+                                            </button>
+                                            <button class="text-gray-400 hover:text-blue-500 transition-colors p-2">
+                                                <i class="fas fa-bookmark text-lg"></i>
+                                            </button>
+                                            <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                                                Đọc ngay
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Rank 5 -->
-                    <div class="bg-white rounded-lg shadow-sm p-6 top-card">
-                        <div class="flex items-center space-x-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rank-default rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                    5
-                                </div>
-                                <div class="w-16 h-20 bg-gradient-to-br from-green-400 to-teal-600 rounded flex-shrink-0"></div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-gray-800 mb-2 hover:text-blue-600 cursor-pointer">
-                                            My Hero Academia
-                                        </h3>
-                                        <p class="text-sm text-gray-600 mb-3">
-                                            Tác giả: Kohei Horikoshi • Thể loại: Action, Superhero • Chapter 410
-                                        </p>
-                                        <div class="flex items-center space-x-6">
-                                            <div class="flex items-center space-x-1">
-                                                <div class="flex text-yellow-500">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="font-bold text-lg ml-2">4.5</span>
-                                                <span class="text-gray-500 text-sm">(38,923 đánh giá)</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-blue-600">
-                                                <i class="fas fa-eye"></i>
-                                                <span class="font-semibold">723K lượt xem</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-red-500">
-                                                <i class="fas fa-heart"></i>
-                                                <span class="font-semibold">189K</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-3">
-                                        <button class="text-gray-400 hover:text-red-500 transition-colors p-2">
-                                            <i class="fas fa-heart text-lg"></i>
-                                        </button>
-                                        <button class="text-gray-400 hover:text-blue-500 transition-colors p-2">
-                                            <i class="fas fa-bookmark text-lg"></i>
-                                        </button>
-                                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                                            Đọc ngay
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Rank 6 -->
-                    <div class="bg-white rounded-lg shadow-sm p-6 top-card">
-                        <div class="flex items-center space-x-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rank-default rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                    6
-                                </div>
-                                <div class="w-16 h-20 bg-gradient-to-br from-red-400 to-pink-600 rounded flex-shrink-0"></div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-gray-800 mb-2 hover:text-blue-600 cursor-pointer">
-                                            Jujutsu Kaisen
-                                        </h3>
-                                        <p class="text-sm text-gray-600 mb-3">
-                                            Tác giả: Gege Akutami • Thể loại: Action, Supernatural • Chapter 245
-                                        </p>
-                                        <div class="flex items-center space-x-6">
-                                            <div class="flex items-center space-x-1">
-                                                <div class="flex text-yellow-500">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="font-bold text-lg ml-2">4.4</span>
-                                                <span class="text-gray-500 text-sm">(42,156 đánh giá)</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-blue-600">
-                                                <i class="fas fa-eye"></i>
-                                                <span class="font-semibold">634K lượt xem</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-red-500">
-                                                <i class="fas fa-heart"></i>
-                                                <span class="font-semibold">156K</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-3">
-                                        <button class="text-gray-400 hover:text-red-500 transition-colors p-2">
-                                            <i class="fas fa-heart text-lg"></i>
-                                        </button>
-                                        <button class="text-gray-400 hover:text-blue-500 transition-colors p-2">
-                                            <i class="fas fa-bookmark text-lg"></i>
-                                        </button>
-                                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                                            Đọc ngay
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Rank 7 -->
-                    <div class="bg-white rounded-lg shadow-sm p-6 top-card">
-                        <div class="flex items-center space-x-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rank-default rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                    7
-                                </div>
-                                <div class="w-16 h-20 bg-gradient-to-br from-indigo-400 to-purple-600 rounded flex-shrink-0"></div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-gray-800 mb-2 hover:text-blue-600 cursor-pointer">
-                                            Solo Leveling
-                                        </h3>
-                                        <p class="text-sm text-gray-600 mb-3">
-                                            Tác giả: Chugong • Thể loại: Action, Fantasy • Chapter 179
-                                        </p>
-                                        <div class="flex items-center space-x-6">
-                                            <div class="flex items-center space-x-1">
-                                                <div class="flex text-yellow-500">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="font-bold text-lg ml-2">4.3</span>
-                                                <span class="text-gray-500 text-sm">(67,892 đánh giá)</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-blue-600">
-                                                <i class="fas fa-eye"></i>
-                                                <span class="font-semibold">512K lượt xem</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-red-500">
-                                                <i class="fas fa-heart"></i>
-                                                <span class="font-semibold">134K</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-3">
-                                        <button class="text-red-500 hover:text-red-600 transition-colors p-2">
-                                            <i class="fas fa-heart text-lg"></i>
-                                        </button>
-                                        <button class="text-blue-500 hover:text-blue-600 transition-colors p-2">
-                                            <i class="fas fa-bookmark text-lg"></i>
-                                        </button>
-                                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                                            Đọc ngay
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Rank 8 -->
-                    <div class="bg-white rounded-lg shadow-sm p-6 top-card">
-                        <div class="flex items-center space-x-6">
-                            <div class="flex items-center space-x-4">
-                                <div class="w-12 h-12 rank-default rounded-full flex items-center justify-center text-white font-bold text-lg">
-                                    8
-                                </div>
-                                <div class="w-16 h-20 bg-gradient-to-br from-yellow-400 to-orange-600 rounded flex-shrink-0"></div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between">
-                                    <div>
-                                        <h3 class="text-xl font-bold text-gray-800 mb-2 hover:text-blue-600 cursor-pointer">
-                                            Dragon Ball Super
-                                        </h3>
-                                        <p class="text-sm text-gray-600 mb-3">
-                                            Tác giả: Akira Toriyama • Thể loại: Action, Adventure • Chapter 102
-                                        </p>
-                                        <div class="flex items-center space-x-6">
-                                            <div class="flex items-center space-x-1">
-                                                <div class="flex text-yellow-500">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="far fa-star"></i>
-                                                </div>
-                                                <span class="font-bold text-lg ml-2">4.2</span>
-                                                <span class="text-gray-500 text-sm">(29,734 đánh giá)</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-blue-600">
-                                                <i class="fas fa-eye"></i>
-                                                <span class="font-semibold">478K lượt xem</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-red-500">
-                                                <i class="fas fa-heart"></i>
-                                                <span class="font-semibold">123K</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-center space-x-3">
-                                        <button class="text-gray-400 hover:text-red-500 transition-colors p-2">
-                                            <i class="fas fa-heart text-lg"></i>
-                                        </button>
-                                        <button class="text-gray-400 hover:text-blue-500 transition-colors p-2">
-                                            <i class="fas fa-bookmark text-lg"></i>
-                                        </button>
-                                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
-                                            Đọc ngay
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
 
                 <!-- Grid View (Hidden by default) -->

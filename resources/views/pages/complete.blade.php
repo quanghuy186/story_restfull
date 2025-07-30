@@ -104,10 +104,10 @@
                     <i class="fas fa-home"></i>
                     <span>Trang chủ</span>
                 </a>
-                <a href="#" class="hover:text-blue-200">Thể loại</a>
-                <a href="#" class="hover:text-blue-200">Top truyện</a>
-                <a href="#" class="hover:text-blue-200">Truyện mới</a>
-                <a href="#" class="text-blue-200 font-semibold">Hoàn thành</a>
+                <a href="{{route('categories')}}" class="hover:text-blue-200">Thể loại</a>
+                <a href="{{ route('list_story', 'top-truyen') }}" class="hover:text-blue-200">Top truyện</a>
+                <a href="{{ route('list_story', 'truyen-moi') }}" class="text-blue-200 font-semibold">Truyện mới</a>
+                <a href="{{ route('list_story', 'hoan-thanh') }}" class="hover:text-blue-200">Hoàn thành</a>
                 <a href="#" class="hover:text-blue-200">Theo dõi</a>
             </div>
         </div>
@@ -379,533 +379,65 @@
 
                 <!-- Grid View -->
                 <div id="manga-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
-                    <!-- Completed Manga Card 1 -->
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-emerald-400 to-teal-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 hover:opacity-100 transform scale-75 hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-book-open mr-2"></i>
-                                    Đọc từ đầu
-                                </button>
-                            </div>
-                            <!-- Completed Badge -->
-                            <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
-                                HOÀN THÀNH
-                            </div>
-                            <!-- Progress Bar -->
-                            <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
-                            <!-- Chapter Count -->
-                            <div class="absolute bottom-2 right-2 chapter-counter text-white px-2 py-1 rounded text-xs font-bold">
-                                <i class="fas fa-list-ol mr-1"></i>
-                                139 chap
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Attack on Titan</h3>
-                            <p class="text-sm text-gray-600 mb-3">Hoàn thành • 2021</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="ml-1 font-bold text-gray-800">4.8</span>
-                                </div>
-                                <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">
-                                    Kết thúc tuyệt vời
-                                </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">1.2M lượt đọc</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Completed Manga Card 2 -->
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-orange-400 to-red-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 hover:opacity-100 transform scale-75 hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-book-open mr-2"></i>
-                                    Đọc từ đầu
-                                </button>
-                            </div>
-                            <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
-                                HOÀN THÀNH
-                            </div>
-                            <div class="absolute top-2 right-2 bg-yellow-500 text-white px-2 py-1 rounded text-xs font-bold">
-                                KINH ĐIỂN
-                            </div>
-                            <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
-                            <div class="absolute bottom-2 right-2 chapter-counter text-white px-2 py-1 rounded text-xs font-bold">
-                                <i class="fas fa-list-ol mr-1"></i>
-                                700 chap
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Naruto</h3>
-                            <p class="text-sm text-gray-600 mb-3">Hoàn thành • 2014</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="ml-1 font-bold text-gray-800">4.9</span>
-                                </div>
-                                <span class="text-xs bg-yellow-100 text-yellow-800 px-2 py-1 rounded font-semibold">
-                                    Huyền thoại
-                                </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-red-500 hover:text-red-600 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-blue-500 hover:text-blue-600 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">2.8M lượt đọc</span>
-                            </div>
-                        </div>
-                    </div>
-<!-- Completed Manga Card 3 -->
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-purple-400 to-indigo-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 hover:opacity-100 transform scale-75 hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-book-open mr-2"></i>
-                                    Đọc từ đầu
-                                </button>
-                            </div>
-                            <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
-                                HOÀN THÀNH
-                            </div>
-                            <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
-                            <div class="absolute bottom-2 right-2 chapter-counter text-white px-2 py-1 rounded text-xs font-bold">
-                                <i class="fas fa-list-ol mr-1"></i>
-                                108 chap
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Death Note</h3>
-                            <p class="text-sm text-gray-600 mb-3">Hoàn thành • 2006</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="ml-1 font-bold text-gray-800">4.7</span>
-                                </div>
-                                <span class="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded font-semibold">
-                                    Masterpiece
-                                </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">1.8M lượt đọc</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Completed Manga Card 4 -->
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-pink-400 to-rose-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 hover:opacity-100 transform scale-75 hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-book-open mr-2"></i>
-                                    Đọc từ đầu
-                                </button>
-                            </div>
-                            <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
-                                HOÀN THÀNH
-                            </div>
-                            <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
-                            <div class="absolute bottom-2 right-2 chapter-counter text-white px-2 py-1 rounded text-xs font-bold">
-                                <i class="fas fa-list-ol mr-1"></i>
-                                205 chap
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Demon Slayer</h3>
-                            <p class="text-sm text-gray-600 mb-3">Hoàn thành • 2020</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="ml-1 font-bold text-gray-800">4.6</span>
-                                </div>
-                                <span class="text-xs bg-pink-100 text-pink-800 px-2 py-1 rounded font-semibold">
-                                    Phổ biến
-                                </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">956K lượt đọc</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Continue with more cards... -->
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-cyan-400 to-blue-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 hover:opacity-100 transform scale-75 hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-book-open mr-2"></i>
-                                    Đọc từ đầu
-                                </button>
-                            </div>
-                            <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
-                                HOÀN THÀNH
-                            </div>
-                            <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
-                            <div class="absolute bottom-2 right-2 chapter-counter text-white px-2 py-1 rounded text-xs font-bold">
-                                <i class="fas fa-list-ol mr-1"></i>
-                                180 chap
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Promised Neverland</h3>
-                            <p class="text-sm text-gray-600 mb-3">Hoàn thành • 2020</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="ml-1 font-bold text-gray-800">4.3</span>
-                                </div>
-                                <span class="text-xs bg-cyan-100 text-cyan-800 px-2 py-1 rounded font-semibold">
-                                    Độc đáo
-                                </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">645K lượt đọc</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-amber-400 to-orange-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 hover:opacity-100 transform scale-75 hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-book-open mr-2"></i>
-                                    Đọc từ đầu
-                                </button>
-                            </div>
-                            <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
-                                HOÀN THÀNH
-                            </div>
-                            <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
-                            <div class="absolute bottom-2 right-2 chapter-counter text-white px-2 py-1 rounded text-xs font-bold">
-                                <i class="fas fa-list-ol mr-1"></i>
-                                108 chap
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Fullmetal Alchemist</h3>
-                            <p class="text-sm text-gray-600 mb-3">Hoàn thành • 2010</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="ml-1 font-bold text-gray-800">4.9</span>
-                                </div>
-                                <span class="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded font-semibold">
-                                    Legendary
-                                </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-red-500 hover:text-red-600 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-blue-500 hover:text-blue-600 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">1.5M lượt đọc</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-lime-400 to-green-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 hover:opacity-100 transform scale-75 hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-book-open mr-2"></i>
-                                    Đọc từ đầu
-                                </button>
-                            </div>
-                            <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
-                                HOÀN THÀNH
-                            </div>
-                            <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
-                            <div class="absolute bottom-2 right-2 chapter-counter text-white px-2 py-1 rounded text-xs font-bold">
-                                <i class="fas fa-list-ol mr-1"></i>
-                                278 chap
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Tokyo Revengers</h3>
-                            <p class="text-sm text-gray-600 mb-3">Hoàn thành • 2022</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <span class="ml-1 font-bold text-gray-800">4.2</span>
-                                </div>
-                                <span class="text-xs bg-lime-100 text-lime-800 px-2 py-1 rounded font-semibold">
-                                    Trending
-                                </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">723K lượt đọc</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
-                        <div class="aspect-[3/4] relative overflow-hidden">
-                            <div class="w-full h-full bg-gradient-to-br from-violet-400 to-purple-600"></div>
-                            <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 hover:opacity-100 transform scale-75 hover:scale-100 transition-all duration-300">
-                                    <i class="fas fa-book-open mr-2"></i>
-                                    Đọc từ đầu
-                                </button>
-                            </div>
-                            <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
-                                HOÀN THÀNH
-                            </div>
-                            <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
-                            <div class="absolute bottom-2 right-2 chapter-counter text-white px-2 py-1 rounded text-xs font-bold">
-                                <i class="fas fa-list-ol mr-1"></i>
-                                144 chap
-                            </div>
-                        </div>
-                        <div class="p-4">
-                            <h3 class="font-semibold mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">Mob Psycho 100</h3>
-                            <p class="text-sm text-gray-600 mb-3">Hoàn thành • 2017</p>
-                            <div class="flex items-center justify-between mb-3">
-                                <div class="flex items-center space-x-1 text-yellow-500 text-sm rating-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <span class="ml-1 font-bold text-gray-800">4.5</span>
-                                </div>
-                                <span class="text-xs bg-violet-100 text-violet-800 px-2 py-1 rounded font-semibold">
-                                    Unique
-                                </span>
-                            </div>
-                            <div class="flex items-center justify-between">
-                                <div class="flex items-center space-x-2">
-                                    <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                        <i class="fas fa-heart"></i>
-                                    </button>
-                                    <button class="text-gray-400 hover:text-blue-500 transition-colors">
-                                        <i class="fas fa-bookmark"></i>
-                                    </button>
-                                </div>
-                                <span class="text-xs text-gray-500">534K lượt đọc</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- List View (Hidden by default) -->
-                <div id="manga-list" class="hidden space-y-6 mb-8">
-                    <!-- List Item 1 -->
-                    <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
-                        <div class="flex items-start space-x-6">
-                            <div class="w-24 h-32 bg-gradient-to-br from-emerald-400 to-teal-600 rounded flex-shrink-0 relative">
-                                <div class="absolute -top-2 -left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
-                                    HOÀN THÀNH
-                                </div>
-                                <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-bold text-gray-800 mb-2 hover:text-blue-600 cursor-pointer">
-                                            Attack on Titan
-                                        </h3>
-                                        <p class="text-sm text-gray-600 mb-3">
-                                            <span class="font-semibold">Tác giả:</span> Hajime Isayama • 
-                                            <span class="font-semibold">Thể loại:</span> Action, Drama • 
-                                            <span class="font-semibold">Hoàn thành:</span> 2021 • 
-                                            <span class="font-semibold">Chapters:</span> 139
-                                        </p>
-                                        <p class="text-gray-700 mb-4 line-clamp-3">
-                                            Hơn 100 năm trước, những người khổng lồ xuất hiện trên trái đất và đẩy nhân loại đến bờ vực tuyệt chủng. Những người sống sót rút lui vào một thành phố được bao quanh bởi những bức tường khổng lồ, thậm chí cao hơn cả những Titan lớn nhất. Eren Yeager sống trong thành phố Shiganshina với mẹ và bạn thân Mikasa và Armin...
-                                        </p>
-                                        <div class="flex items-center space-x-6 text-sm">
-                                            <div class="flex items-center space-x-1">
-                                                <div class="flex text-yellow-500 rating-stars">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="font-bold ml-1">4.8</span>
-                                                <span class="text-gray-500">(23,456 đánh giá)</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-blue-600">
-                                                <i class="fas fa-eye"></i>
-                                                <span class="font-semibold">1.2M lượt đọc</span>
-                                            </div>
-                                            <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full font-semibold">
-                                                Kết thúc tuyệt vời
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="flex flex-col items-end space-y-3 ml-6">
-                                        <div class="flex items-center space-x-2">
-                                            <button class="p-2 text-gray-400 hover:text-red-500 transition-colors">
-                                                <i class="fas fa-heart text-lg"></i>
-                                            </button>
-                                            <button class="p-2 text-gray-400 hover:text-blue-500 transition-colors">
-                                                <i class="fas fa-bookmark text-lg"></i>
-                                            </button>
-                                        </div>
-                                        <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                    @foreach ($complete_stories['data']['items'] as $item)
+                        <div class="bg-white rounded-lg shadow-sm overflow-hidden card-hover">
+                            <div class="aspect-[3/4] relative overflow-hidden">
+                                <a href="{{ route('story', $item['slug']) }}"> 
+                                    <img src="{{ $item['thumb_url'] ? "https://otruyenapi.com/uploads/comics/".$item['thumb_url'] : '/images/default-manga.jpg' }}" alt="" class="w-full h-full bg-gradient-to-br from-emerald-400 to-teal-600">
+                                    <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                                        <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 hover:opacity-100 transform scale-75 hover:scale-100 transition-all duration-300">
                                             <i class="fas fa-book-open mr-2"></i>
                                             Đọc từ đầu
                                         </button>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- List Item 2 -->
-                    <div class="bg-white rounded-lg shadow-sm p-6 hover:shadow-md transition-shadow">
-                        <div class="flex items-start space-x-6">
-                            <div class="w-24 h-32 bg-gradient-to-br from-orange-400 to-red-600 rounded flex-shrink-0 relative">
-                                <div class="absolute -top-2 -left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
-                                    HOÀN THÀNH
-                                </div>
-                                <div class="absolute -top-2 -right-2 bg-yellow-500 text-white px-2 py-1 rounded text-xs font-bold">
-                                    KINH ĐIỂN
-                                </div>
-                                <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
-                            </div>
-                            <div class="flex-1">
-                                <div class="flex items-start justify-between">
-                                    <div class="flex-1">
-                                        <h3 class="text-xl font-bold text-gray-800 mb-2 hover:text-blue-600 cursor-pointer">
-                                            Naruto
-                                        </h3>
-                                        <p class="text-sm text-gray-600 mb-3">
-                                            <span class="font-semibold">Tác giả:</span> Masashi Kishimoto • 
-                                            <span class="font-semibold">Thể loại:</span> Action, Adventure • 
-                                            <span class="font-semibold">Hoàn thành:</span> 2014 • 
-                                            <span class="font-semibold">Chapters:</span> 700
-                                        </p>
-                                        <p class="text-gray-700 mb-4 line-clamp-3">
-                                            Naruto là một ninja trẻ tuổi với ước mơ trở thành Hokage - thủ lĩnh và ninja mạnh nhất của làng. Tuy nhiên, trong người cậu đang bị phong ấn một con quái vật cáo chín đuôi khủng khiếp từng tấn công làng Hidden Leaf. Vì vậy, nhiều người trong làng coi Naruto như một mối đe dọa...
-                                        </p>
-                                        <div class="flex items-center space-x-6 text-sm">
-                                            <div class="flex items-center space-x-1">
-                                                <div class="flex text-yellow-500 rating-stars">
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </div>
-                                                <span class="font-bold ml-1">4.9</span>
-                                                <span class="text-gray-500">(45,789 đánh giá)</span>
-                                            </div>
-                                            <div class="flex items-center space-x-1 text-blue-600">
-                                                <i class="fas fa-eye"></i>
-                                                <span class="font-semibold">2.8M lượt đọc</span>
-                                            </div>
-                                            <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full font-semibold">
-                                                Huyền thoại
-                                            </span>
-                                        </div>
+                                    <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold completed-badge">
+                                        HOÀN THÀNH
                                     </div>
-                                    <div class="flex flex-col items-end space-y-3 ml-6">
-                                        <div class="flex items-center space-x-2">
-                                            <button class="p-2 text-red-500 hover:text-red-600 transition-colors">
-                                                <i class="fas fa-heart text-lg"></i>
-                                            </button>
-                                            <button class="p-2 text-blue-500 hover:text-blue-600 transition-colors">
-                                                <i class="fas fa-bookmark text-lg"></i>
-                                            </button>
-                                        </div>
-                                        <button class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors font-semibold">
-                                            <i class="fas fa-book-open mr-2"></i>
-                                            Đọc từ đầu
+                                </a>
+                                
+                                <div class="absolute bottom-0 left-0 right-0 h-1 progress-bar"></div>
+                                <div class="absolute bottom-2 right-2 chapter-counter text-white px-2 py-1 rounded text-xs font-bold">
+                                    <i class="fas fa-list-ol mr-1"></i>
+                                    @if(!empty($item['chaptersLatest']))
+                                        @foreach ($item['chaptersLatest'] as $chapter)
+                                                {{ $chapter['chapter_name'] ?? 'Chapter 278' }}
+                                        @endforeach
+                                    @else
+                                        0
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="font-semibold mb-2 line-clamp-2 hover:text-blue-600 cursor-pointer">{{ $item['name'] ?? 'chưa cập nhật' }}</h3>
+                                <p class="text-sm text-gray-600 mb-3">Hoàn thành • 2021</p>
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="flex items-center space-x-1 text-yellow-500 text-sm rating-stars">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="ml-1 font-bold text-gray-800">4.8</span>
+                                    </div>
+                                    <span class="text-xs bg-green-100 text-green-800 px-2 py-1 rounded font-semibold">
+                                        Kết thúc tuyệt vời
+                                    </span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center space-x-2">
+                                        <button class="text-gray-400 hover:text-red-500 transition-colors">
+                                            <i class="fas fa-heart"></i>
+                                        </button>
+                                        <button class="text-gray-400 hover:text-blue-500 transition-colors">
+                                            <i class="fas fa-bookmark"></i>
                                         </button>
                                     </div>
+                                    <span class="text-xs text-gray-500">1.2M lượt đọc</span>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    @endforeach
+                    
                 </div>
 
                 <!-- Load More Section -->

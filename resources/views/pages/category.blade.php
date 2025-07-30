@@ -57,14 +57,14 @@
     <nav class="bg-blue-600 text-white">
         <div class="container mx-auto px-4">
             <div class="flex items-center space-x-8 py-3">
-                <a href="{{route('home')}}" class="hover:text-blue-200 flex items-center space-x-1">
+                <a href="#" class="hover:text-blue-200 flex items-center space-x-1">
                     <i class="fas fa-home"></i>
                     <span>Trang chủ</span>
                 </a>
-                <a href="#" class="text-blue-200 font-semibold">Thể loại</a>
-                <a href="#" class="hover:text-blue-200">Top truyện</a>
-                <a href="#" class="hover:text-blue-200">Truyện mới</a>
-                <a href="#" class="hover:text-blue-200">Hoàn thành</a>
+                <a href="{{route('categories')}}" class="hover:text-blue-200">Thể loại</a>
+                <a href="{{ route('list_story', 'top-truyen') }}" class="hover:text-blue-200">Top truyện</a>
+                <a href="{{ route('list_story', 'truyen-moi') }}" class="text-blue-200 font-semibold">Truyện mới</a>
+                <a href="{{ route('list_story', 'hoan-thanh') }}" class="hover:text-blue-200">Hoàn thành</a>
                 <a href="#" class="hover:text-blue-200">Theo dõi</a>
             </div>
         </div>
@@ -219,15 +219,16 @@
                 <div id="manga-grid" class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-8">
                     @foreach ($item_categories['data']['items'] as $action)
                         <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-lg transition-all duration-300 group">
-                            <div class="aspect-[3/4] relative overflow-hidden">
-                                {{-- <div class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600"></div> --}}
-                                <img class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600" src="{{ $action['thumb_url'] ? "https://otruyenapi.com/uploads/comics/".$action['thumb_url'] : '/images/default-manga.jpg' }}" alt="">
-                                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
-                                    <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
-                                        <i class="fas fa-play mr-2"></i>
-                                        Đọc ngay
-                                    </button>
-                                </div>
+                            <div class="aspect-[3/4] relative overflow-hidden"> 
+                                <a href="{{ route('story', $action['slug']) }}">
+                                    <img class="w-full h-full bg-gradient-to-br from-blue-400 to-purple-600" src="{{ $action['thumb_url'] ? "https://otruyenapi.com/uploads/comics/".$action['thumb_url'] : '/images/default-manga.jpg' }}" alt="">
+                                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-40 transition-all duration-300 flex items-center justify-center">
+                                        <button class="bg-white text-black px-4 py-2 rounded-lg font-semibold opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300">
+                                            <i class="fas fa-play mr-2"></i>
+                                            Đọc ngay
+                                        </button>
+                                    </div>
+                                </a>
                                 <!-- Status badge -->
                                 <div class="absolute top-2 left-2 bg-green-500 text-white px-2 py-1 rounded text-xs font-bold">
                                     Hoàn thành
