@@ -240,7 +240,11 @@
                             </div>
                             <div class="p-4">
                                 <h3 class="font-semibold mb-2 line-clamp-2 group-hover:text-blue-600">{{ $action['name'] }}</h3>
-                                <p class="text-sm text-gray-600 mb-3">Chapter 369</p>
+                                    @if(isset($action['chaptersLatest']))
+                                        @foreach ($action['chaptersLatest'] as $chapter_name)
+                                            <p class="text-sm text-gray-600 mb-3">{{ $chapter_name['chapter_name'] ?? 'Chapter 278' }} chương</p> 
+                                        @endforeach
+                                    @endif
                                 <div class="flex items-center justify-between mb-3">
                                     <div class="flex items-center space-x-1 text-yellow-500 text-sm">
                                         <i class="fas fa-star"></i>

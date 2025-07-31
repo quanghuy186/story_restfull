@@ -41,21 +41,16 @@ class HomeController extends Controller
         return view('pages.new')->with('story_news', $story_news);
     }
 
-    // public function story($slug){
-    //     $get_story = Http::get('https://otruyenapi.com/v1/api/truyen-tranh/'.$slug)->json();
-
-    //     return view('pages.story')->with('get_story', $get_story);
-    // }
-
     public function story($slug){
         try {
             $get_story = Http::get('https://otruyenapi.com/v1/api/truyen-tranh/'.$slug)->json();
-            
+            $story_hots = Http::get('https://otruyenapi.com/v1/api/danh-sach/truyen-hot')->json();
             if(!isset($get_story['data'])){
                 abort(404, 'Không tìm thấy truyện');
             }
             // dd($get_story);
-            return view('pages.story')->with('get_story', $get_story);
+            return view('pages.story')->with('get_story', $get_story)
+            ->with('story_hots', $story_hots);
         } catch (\Exception $e) {
             return redirect()->route('home')->with('error', 'Có lỗi xảy ra khi tải thông tin truyện');
         }

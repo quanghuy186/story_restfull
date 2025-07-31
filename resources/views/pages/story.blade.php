@@ -99,7 +99,7 @@
                                 <div class="flex items-center">
                                     <span class="text-gray-500 w-24">Tình trạng:</span>
                                     <span class="font-medium {{ $story['status'] == 'completed' ? 'text-green-600' : 'text-blue-600' }}">
-                                        {{ $story['status'] == 'completed' ? 'Hoàn thành' : 'Đang tiến hành' }}
+                                        {{ $story['status'] == 'ongoing' ? 'Đang tiến hành' : 'Hoàn thành'}}
                                     </span>
                                 </div>
                                 
@@ -112,11 +112,7 @@
                                     <span class="text-gray-500 w-24">Cập nhật:</span>
                                     <span class="font-medium">
                                         @if(isset($story['updatedAt']))
-                                            @if(is_array($story['updatedAt']))
-                                                {{ $story['updatedAt']['date'] ?? 'N/A' }}
-                                            @else
-                                                {{ $story['updatedAt'] }}
-                                            @endif
+                                            {{ timeAgo($story['updatedAt']) ?? 'Không xác định'}}
                                         @else
                                             N/A
                                         @endif
@@ -126,17 +122,17 @@
 
                             <!-- Categories -->
                             @if(isset($story['category']) && count($story['category']) > 0)
-                            <div class="mt-4">
-                                <span class="text-gray-500 text-sm">Thể loại:</span>
-                                <div class="flex flex-wrap gap-2 mt-2">
-                                    @foreach($story['category'] as $category)
-                                    <a href="/the-loai/{{ $category['slug'] }}" 
-                                       class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition">
-                                        {{ $category['name'] }}
-                                    </a>
-                                    @endforeach
+                                <div class="mt-4">
+                                    <span class="text-gray-500 text-sm">Thể loại:</span>
+                                    <div class="flex flex-wrap gap-2 mt-2">
+                                        @foreach($story['category'] as $category)
+                                        <a href="/the-loai/{{ $category['slug'] }}" 
+                                        class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition">
+                                            {{ $category['name'] }}
+                                        </a>
+                                        @endforeach
+                                    </div>
                                 </div>
-                            </div>
                             @endif
 
                             <!-- Action Buttons -->
@@ -144,12 +140,12 @@
                                 @if(isset($story['chapters'][0]['server_data']) && count($story['chapters'][0]['server_data']) > 0)
                                 <a href="/truyen-tranh/{{ $story['slug'] }}/{{ $story['chapters'][0]['server_data'][count($story['chapters'][0]['server_data']) - 1]['chapter_name'] }}" 
                                    class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg transition flex items-center">
-                                    <i class="fas fa-book-reader mr-2"></i> Đọc từ đầu
+                                    <i class="fas fa-book-reader mr-2"></i> Đọc mới nhất
                                 </a>
                                 
                                 <a href="/truyen-tranh/{{ $story['slug'] }}/{{ $story['chapters'][0]['server_data'][0]['chapter_name'] }}" 
                                    class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg transition flex items-center">
-                                    <i class="fas fa-forward mr-2"></i> Đọc mới nhất
+                                    <i class="fas fa-forward mr-2"></i> Đọc từ đầu
                                 </a>
                                 @endif
                                 
@@ -170,7 +166,7 @@
                             @if(is_array($story['content']))
                                 {{ implode(' ', $story['content']) }}
                             @else
-                                {!! nl2br(e($story['content'])) !!}
+                                {!! nl2br($story['content']) !!}
                             @endif
                         </div>
                     </div>
@@ -190,7 +186,7 @@
                             <a href="/truyen-tranh/{{ $story['slug'] }}/{{ $chapter['chapter_name'] }}" 
                                class="flex items-center justify-between p-3 rounded hover:bg-gray-100 transition group">
                                 <span class="text-gray-700 group-hover:text-blue-600">
-                                    {{ $chapter['chapter_title'] }}
+                                    Chương {{ $chapter['chapter_name'] }}
                                 </span>
                                 <span class="text-xs text-gray-500">
                                     {{ $chapter['chapter_api_data'] ? 'Có sẵn' : 'Chưa có' }}
@@ -232,8 +228,40 @@
                     <div class="space-y-4">
                         <!-- Placeholder for top stories -->
                         <div class="text-center py-8 text-gray-500">
-                            <i class="fas fa-spinner fa-spin text-3xl mb-3"></i>
-                            <p class="text-sm">Đang tải truyện hot...</p>
+                            {{-- <i class="fas fa-spinner fa-spin text-3xl mb-3"></i> --}}
+                            @foreach (array_slice($story_hots['data']['items'], 0, 3) as $item)
+                                <div class="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-shadow">
+                                    <a href="{{ route('story', $item['slug']) }}">
+                                        <div class="aspect-[3/4] relative overflow-hidden">
+                                            <img src="{{ $item['thumb_url'] ? "https://otruyenapi.com/uploads/comics/".$item['thumb_url'] : '/images/default-manga.jpg' }}" 
+                                                alt="{{ $item['name'] }}"
+                                                class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                            @if($item['is_new'] ?? false)
+                                                <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded text-xs font-bold">
+                                                    NEW
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="p-4">
+                                        <h3 class="font-semibold mb-2 line-clamp-2">{{ $item['name'] }}</h3>
+                                        @if (isset($item['chaptersLatest']))
+                                            @foreach ($item['chaptersLatest'] as $chapter_name)
+                                                <p class="text-sm text-gray-600 mb-3">{{ $chapter_name['chapter_name'] ?? 'Chapter 278' }} Chương</p> 
+                                            @endforeach
+                                        @endif
+                                        
+                                        <div class="flex items-center justify-between">
+                                            <div class="flex items-center space-x-1 text-yellow-500 text-sm">
+                                                <i class="fas fa-star"></i>
+                                                <span>{{ $item['rating'] ?? '4.6' }}</span>
+                                            </div>
+                                            <span class="text-xs text-gray-500">{{ timeAgo($item['updatedAt']) ?? '1 ngày trước' }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

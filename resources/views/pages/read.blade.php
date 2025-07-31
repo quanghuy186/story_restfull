@@ -73,7 +73,7 @@
                         @foreach($story_data['data']['item']['chapters'][0]['server_data'] as $chapter)
                             <option value="/truyen-tranh/{{ $story_slug }}/{{ $chapter['chapter_name'] }}"
                                     {{ isset($current_chapter) && $chapter['chapter_name'] == $current_chapter['chapter_name'] ? 'selected' : '' }}>
-                                {{ $chapter['chapter_title'] }}
+                                Chương {{ $chapter['chapter_name'] }}
                             </option>
                         @endforeach
                     @endif

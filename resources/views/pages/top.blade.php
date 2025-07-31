@@ -322,8 +322,22 @@
                                                 {{ $item['name'] }}
                                             </h3>
                                             <p class="text-sm text-gray-600 mb-3">
-                                                Tác giả: Masashi Kishimoto • Thể loại: Action, Adventure • Chapter 700
+                                                Tác giả: Masashi Kishimoto
+                                                @if(isset($item['category']) && count($item['category']) > 0)
+                                                    <div class="mt-4">
+                                                        <span class="text-gray-500 text-sm">Thể loại:</span>
+                                                        <div class="flex flex-wrap gap-2 mt-2">
+                                                            @foreach($item['category'] as $category)
+                                                            <a href="/the-loai/{{ $category['slug'] }}" 
+                                                            class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm hover:bg-blue-200 transition">
+                                                                {{ $category['name'] }}
+                                                            </a>
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
+                                                @endif
                                             </p>
+                                            
                                             <div class="flex items-center space-x-6">
                                                 <div class="flex items-center space-x-1">
                                                     <div class="flex text-yellow-500">
@@ -333,12 +347,12 @@
                                                         <i class="fas fa-star"></i>
                                                         <i class="fas fa-star"></i>
                                                     </div>
-                                                    <span class="font-bold text-lg ml-2">4.6</span>
-                                                    <span class="text-gray-500 text-sm">(45,678 đánh giá)</span>
+                                                    <span class="font-bold text-lg ml-2">{{ random_int(450, 500)/100 }}</span>
+                                                    <span class="text-gray-500 text-sm">{{ random_int(20, 120) }} đánh giá</span>
                                                 </div>
                                                 <div class="flex items-center space-x-1 text-blue-600">
                                                     <i class="fas fa-eye"></i>
-                                                    <span class="font-semibold">856K lượt xem</span>
+                                                    <span class="font-semibold">{{ random_int(120, 500) }} lượt xem</span>
                                                 </div>
                                                 <div class="flex items-center space-x-1 text-red-500">
                                                     <i class="fas fa-heart"></i>

@@ -224,22 +224,6 @@
                                 <p class="text-xs text-gray-600">1.2M lượt xem</p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <div class="w-8 h-8 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold text-sm">2</div>
-                            <div class="w-12 h-16 bg-gray-300 rounded flex-shrink-0"></div>
-                            <div class="flex-1">
-                                <h4 class="font-semibold text-sm">Naruto</h4>
-                                <p class="text-xs text-gray-600">980K lượt xem</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm">3</div>
-                            <div class="w-12 h-16 bg-gray-300 rounded flex-shrink-0"></div>
-                            <div class="flex-1">
-                                <h4 class="font-semibold text-sm">Dragon Ball</h4>
-                                <p class="text-xs text-gray-600">876K lượt xem</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
