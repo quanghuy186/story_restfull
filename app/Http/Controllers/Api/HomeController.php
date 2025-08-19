@@ -21,13 +21,16 @@ class HomeController extends Controller
     public function category($slug){
         $categories = Http::get('https://otruyenapi.com/v1/api/the-loai/')->json();
         $item_categories = Http::get('https://otruyenapi.com/v1/api/the-loai/'.$slug)->json();
-        return view('pages.category')->with('categories', $categories)->with('item_categories', $item_categories);
+        $story_hots = Http::get('https://otruyenapi.com/v1/api/danh-sach/')->json();
+        return view('pages.category')->with('categories', $categories)->with('item_categories', $item_categories)->with('story_hots', $story_hots);
     }
 
     public function list_category($slug){
         $categories = Http::get('https://otruyenapi.com/v1/api/the-loai/')->json();
         $item_categories = Http::get('https://otruyenapi.com/v1/api/the-loai/'.$slug)->json();
-        return view('pages.category')->with('categories', $categories)->with('item_categories', $item_categories);
+        $story_hots = Http::get('https://otruyenapi.com/v1/api/danh-sach/')->json();
+        $story_news = Http::get('https://otruyenapi.com/v1/api/home')->json();
+        return view('pages.category')->with('story_news', $story_news)->with('categories', $categories)->with('item_categories', $item_categories)->with('story_hots', $story_hots);
     }
     public function list_story($slug){
         $story_news = Http::get('https://otruyenapi.com/v1/api/danh-sach/'.$slug)->json();

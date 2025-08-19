@@ -1,126 +1,6 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Theo dõi - Ổ Truyện</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        .following-gradient {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-        .card-hover {
-            transition: all 0.3s ease;
-        }
-        .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .reading-progress {
-            background: linear-gradient(90deg, #3b82f6 0%, #1d4ed8 100%);
-        }
-        .status-reading { background: linear-gradient(135deg, #10b981, #059669); }
-        .status-completed { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
-        .status-paused { background: linear-gradient(135deg, #f59e0b, #d97706); }
-        .status-dropped { background: linear-gradient(135deg, #ef4444, #dc2626); }
-        .status-planning { background: linear-gradient(135deg, #6b7280, #4b5563); }
-        
-        .notification-badge {
-            animation: notificationPulse 2s infinite;
-        }
-        @keyframes notificationPulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-        
-        .new-chapter {
-            animation: newChapterGlow 3s infinite;
-        }
-        @keyframes newChapterGlow {
-            0%, 100% { box-shadow: 0 0 5px rgba(59, 130, 246, 0.5); }
-            50% { box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
-        }
-        
-        .activity-timeline::before {
-            content: '';
-            position: absolute;
-            left: 15px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, #3b82f6, #e5e7eb);
-        }
-    </style>
-</head>
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between py-3">
-                <!-- Logo -->
-                <div class="flex items-center space-x-2">
-                    <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                        <i class="fas fa-book text-white text-xl"></i>
-                    </div>
-                    <h1 class="text-2xl font-bold text-blue-600">Ổ Truyện</h1>
-                </div>
-                
-                <!-- Search -->
-                <div class="flex-1 max-w-xl mx-8">
-                    <div class="relative">
-                        <input type="text" placeholder="Tìm trong danh sách theo dõi..." 
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
-                        <button class="absolute right-3 top-2.5 text-gray-400 hover:text-blue-500">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-                
-                <!-- User menu -->
-                <div class="flex items-center space-x-4">
-                    <button class="relative text-gray-600 hover:text-blue-500">
-                        <i class="fas fa-bell text-xl"></i>
-                        <span class="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full notification-badge"></span>
-                    </button>
-                    <button class="text-gray-600 hover:text-blue-500">
-                        <i class="fas fa-heart"></i>
-                    </button>
-                    <div class="flex items-center space-x-2">
-                        <div class="w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center">
-                            <span class="text-white text-sm font-bold">A</span>
-                        </div>
-                        <span class="font-semibold text-gray-800">Admin</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+@extends('app')
 
-    <!-- Navigation -->
-    <nav class="bg-blue-600 text-white">
-        <div class="container mx-auto px-4">
-            <div class="flex items-center space-x-8 py-3">
-                <a href="#" class="hover:text-blue-200 flex items-center space-x-1">
-                    <i class="fas fa-home"></i>
-                    <span>Trang chủ</span>
-                </a>
-                <a href="{{route('categories')}}" class="hover:text-blue-200">Thể loại</a>
-                <a href="{{ route('list_story', 'top-truyen') }}" class="hover:text-blue-200">Top truyện</a>
-                <a href="{{ route('list_story', 'truyen-moi') }}" class="text-blue-200 font-semibold">Truyện mới</a>
-                <a href="{{ route('list_story', 'hoan-thanh') }}" class="hover:text-blue-200">Hoàn thành</a>
-                <a href="#" class="hover:text-blue-200">Theo dõi</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
+@section('content')
     <section class="following-gradient text-white py-12">
         <div class="container mx-auto px-4">
             <div class="text-center">
@@ -723,7 +603,10 @@
                 </div>
             </main>
         </div>
-    </div>
+        </div>
+@endsection
+<body class="bg-gray-50">
+  
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white mt-12">
